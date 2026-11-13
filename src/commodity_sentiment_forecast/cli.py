@@ -1,9 +1,9 @@
 import argparse,json
 from pathlib import Path
-from src.common import load_yaml,read_table,resolve,setup_logging
-from src.pipeline import collect_news,process_news,prepare_price_data
-from src.models.price_model import train as train_price
-from src.models.revenue_model import train as train_revenue
+from commodity_sentiment_forecast.common import load_yaml,read_table,resolve,setup_logging
+from commodity_sentiment_forecast.pipeline import collect_news,process_news,prepare_price_data
+from commodity_sentiment_forecast.models.price_model import train as train_price
+from commodity_sentiment_forecast.models.revenue_model import train as train_revenue
 
 def main():
     p=argparse.ArgumentParser();sub=p.add_subparsers(dest="cmd",required=True)

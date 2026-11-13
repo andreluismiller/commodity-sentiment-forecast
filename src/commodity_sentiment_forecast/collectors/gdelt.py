@@ -6,7 +6,7 @@ import pandas as pd
 import requests
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
 from tqdm.auto import tqdm
-from src.common import load_yaml, normalize_text, sha256_text
+from commodity_sentiment_forecast.common import load_yaml, normalize_text, sha256_text
 
 log = logging.getLogger(__name__)
 

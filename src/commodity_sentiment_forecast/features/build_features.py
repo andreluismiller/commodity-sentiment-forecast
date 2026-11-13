@@ -1,5 +1,5 @@
 import numpy as np,pandas as pd
-from src.common import load_yaml,read_table
+from commodity_sentiment_forecast.common import load_yaml,read_table
 
 def add_article_features(df,sources_cfg="config/sources.yaml"):
     cfg=load_yaml(sources_cfg)["source_weights"];default=cfg.get("default",0.65)

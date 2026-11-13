@@ -5,7 +5,7 @@ import requests, trafilatura
 from langdetect import detect, LangDetectException
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
 from tqdm.auto import tqdm
-from src.common import load_yaml, normalize_text, sha256_text
+from commodity_sentiment_forecast.common import load_yaml, normalize_text, sha256_text
 log=logging.getLogger(__name__)
 
 @retry(retry=retry_if_exception_type(requests.RequestException),stop=stop_after_attempt(3),wait=wait_exponential(min=1,max=10),reraise=True)

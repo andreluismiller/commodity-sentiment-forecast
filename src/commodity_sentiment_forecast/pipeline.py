@@ -1,13 +1,13 @@
 import pandas as pd
-from src.common import load_yaml,ensure_parent,read_table,resolve
-from src.collectors.gdelt import collect as collect_gdelt
-from src.collectors.rss import collect as collect_rss
-from src.preprocessing.cleaner import clean
-from src.preprocessing.deduplicator import deduplicate
-from src.nlp.relevance import add_relevance
-from src.nlp.event_classifier import add_events
-from src.nlp.sentiment import add_sentiment
-from src.features.build_features import add_article_features,aggregate_daily,build_price_dataset
+from commodity_sentiment_forecastcommon import load_yaml,ensure_parent,read_table,resolve
+from commodity_sentiment_forecast.collectors.gdelt import collect as collect_gdelt
+from commodity_sentiment_forecast.collectors.rss import collect as collect_rss
+from commodity_sentiment_forecast.preprocessing.cleaner import clean
+from commodity_sentiment_forecast.preprocessing.deduplicator import deduplicate
+from commodity_sentiment_forecast.nlp.relevance import add_relevance
+from commodity_sentiment_forecast.nlp.event_classifier import add_events
+from commodity_sentiment_forecast.nlp.sentiment import add_sentiment
+from commodity_sentiment_forecast.features.build_features import add_article_features,aggregate_daily,build_price_dataset
 
 def collect_news(start,end,model_cfg="config/model.yaml"):
     paths=load_yaml(model_cfg)["paths"];frames=[collect_gdelt(start,end),collect_rss()];df=pd.concat([x for x in frames if not x.empty],ignore_index=True) if any(not x.empty for x in frames) else pd.DataFrame()

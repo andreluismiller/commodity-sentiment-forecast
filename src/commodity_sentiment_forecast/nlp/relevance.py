@@ -1,5 +1,5 @@
 import pandas as pd
-from src.common import load_yaml, normalize_key
+from commodity_sentiment_forecast.common import load_yaml, normalize_key
 
 def classify(text,cfg):
     title,_,body=text.partition("."); title=normalize_key(title);body=normalize_key(body);matches=[]

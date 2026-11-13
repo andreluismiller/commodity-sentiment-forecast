@@ -2,7 +2,7 @@ from __future__ import annotations
 from datetime import timezone
 import feedparser, pandas as pd
 from dateutil import parser
-from src.common import load_yaml, normalize_text, sha256_text
+from commodity_sentiment_forecast.common import load_yaml, normalize_text, sha256_text
 
 def collect(sources_cfg="config/sources.yaml") -> pd.DataFrame:
     cfg=load_yaml(sources_cfg)["rss"]; rows=[]

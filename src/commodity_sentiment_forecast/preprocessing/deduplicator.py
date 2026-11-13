@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-from src.common import normalize_key
+from commodity_sentiment_forecast.common import normalize_key
 
 def deduplicate(df: pd.DataFrame, threshold=0.92) -> pd.DataFrame:
     if len(df)<2:return df.copy()

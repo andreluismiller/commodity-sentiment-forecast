@@ -1,5 +1,5 @@
 import re,pandas as pd
-from src.common import load_yaml, normalize_key
+from commodity_sentiment_forecast.common import load_yaml, normalize_key
 
 def classify(text,events):
     text=normalize_key(text);found=[]

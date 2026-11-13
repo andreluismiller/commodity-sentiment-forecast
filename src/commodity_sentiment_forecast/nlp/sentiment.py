@@ -2,7 +2,7 @@ from __future__ import annotations
 import numpy as np,pandas as pd,torch
 from tqdm.auto import tqdm
 from transformers import AutoTokenizer,AutoModelForSequenceClassification
-from src.common import load_yaml
+from commodity_sentiment_forecast.common import load_yaml
 
 class FinBert:
     def __init__(self,model_name,batch_size,max_length):
