@@ -19,8 +19,20 @@ class FinBert:
                 rows.append({"sentiment_label":label,"sentiment_positive":pos,"sentiment_neutral":neu,"sentiment_negative":neg,"sentiment_score":pos-neg})
         return pd.DataFrame(rows)
 
-def add_sentiment(df,model_cfg="config/model.yaml"):
-    cfg=load_yaml(model_cfg)["nlp"];work=df.copy();eligible=work["detected_language"].isin(["en","unknown"]);cols=["sentiment_label","sentiment_positive","sentiment_neutral","sentiment_negative","sentiment_score"]
-    for c in cols:work[c]=np.nan
-    if eligible.any():work.loc[eligible,cols]=FinBert(cfg["finbert_model"],cfg["batch_size"],cfg["max_length"]).predict(work.loc[eligible,"analysis_text"].fillna("").tolist())[cols].to_numpy()
+def add_sentiment(df, model_cfg="config/model.yaml"):
+    cfg = load_yaml(model_cfg)["nlp"]
+    work = df.copy()
+    eligible = work["detected_language"].isin(["en", "unknown"])
+    num_cols = ["sentiment_positive", "sentiment_neutral", "sentiment_negative", "sentiment_score"]
+
+    work["sentiment_label"] = pd.Series([None] * len(work), index=work.index, dtype="object")
+    for c in num_cols:
+        work[c] = np.nan
+
+    if eligible.any():
+        res = FinBert(cfg["finbert_model"], cfg["batch_size"], cfg["max_length"]).predict(
+            work.loc[eligible, "analysis_text"].fillna("").tolist()
+        )
+        work.loc[eligible, "sentiment_label"] = res["sentiment_label"].to_numpy()
+        work.loc[eligible, num_cols] = res[num_cols].to_numpy(dtype=float)
     return work
