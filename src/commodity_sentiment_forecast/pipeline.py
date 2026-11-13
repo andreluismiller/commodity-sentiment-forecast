@@ -1,5 +1,5 @@
 import pandas as pd
-from commodity_sentiment_forecastcommon import load_yaml,ensure_parent,read_table,resolve
+from commodity_sentiment_forecast.common import load_yaml,ensure_parent,read_table,resolve
 from commodity_sentiment_forecast.collectors.gdelt import collect as collect_gdelt
 from commodity_sentiment_forecast.collectors.rss import collect as collect_rss
 from commodity_sentiment_forecast.preprocessing.cleaner import clean
