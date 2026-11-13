@@ -1,0 +1,25 @@
+paths:
+  bronze_news: data/bronze/news_raw.parquet
+  silver_news: data/silver/news_processed.parquet
+  gold_daily: data/gold/sentiment_daily.parquet
+  prices: data/raw/commodity_prices.csv
+  revenue: data/raw/revenue_monthly.csv
+  price_dataset: data/gold/price_model_dataset.parquet
+  revenue_dataset: data/gold/revenue_model_dataset.parquet
+  models: models
+nlp:
+  finbert_model: ProsusAI/finbert
+  batch_size: 16
+  max_length: 256
+  duplicate_threshold: 0.92
+features:
+  rolling_windows: [3, 7, 14, 30]
+  lags: [1, 2, 3, 5, 10, 20]
+price_model:
+  target_horizon: 5
+  test_fraction: 0.2
+  random_state: 42
+revenue_model:
+  test_months: 12
+  random_state: 42
+  monte_carlo_runs: 1000

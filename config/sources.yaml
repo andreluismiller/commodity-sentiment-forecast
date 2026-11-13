@@ -1,0 +1,24 @@
+gdelt:
+  enabled: true
+  max_records: 250
+  interval_hours: 12
+  request_timeout: 30
+  delay_seconds: 1.0
+rss:
+  enabled: false
+  feeds: []
+articles:
+  request_timeout: 20
+  delay_seconds: 0.2
+  min_body_length: 150
+  user_agent: "CommodityResearchBot/1.0 research@example.com"
+source_weights:
+  reuters.com: 1.0
+  bloomberg.com: 1.0
+  spglobal.com: 1.0
+  argusmedia.com: 1.0
+  fastmarkets.com: 1.0
+  ft.com: 0.95
+  mining.com: 0.9
+  investing.com: 0.8
+  default: 0.65

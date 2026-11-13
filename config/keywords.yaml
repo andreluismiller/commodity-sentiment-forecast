@@ -1,0 +1,35 @@
+commodities:
+  cobre:
+    queries: ['"copper price"', '"copper market"', '"copper supply"', '"copper demand"', '"LME copper"']
+    keywords: [copper, copper price, copper mine, copper cathode, copper smelter, codelco, lme copper, cobre, preço do cobre]
+  aluminio:
+    queries: ['"aluminum price"', '"aluminium market"', '"alumina price"', '"bauxite market"', '"LME aluminum"']
+    keywords: [aluminum, aluminium, alumina, bauxite, aluminum smelter, alcoa, lme aluminum, alumínio, aluminio]
+  aco_carbono:
+    queries: ['"carbon steel price"', '"steel market"', '"hot rolled coil"', '"iron ore price"', '"coking coal price"']
+    keywords: [carbon steel, steel price, steel mill, hot rolled coil, hrc steel, iron ore, coking coal, aço carbono, aco carbono]
+  aco_eletrico_silicio:
+    queries: ['"electrical steel price"', '"grain oriented electrical steel"', '"GOES steel"', '"silicon steel"', '"ferrosilicon price"']
+    keywords: [electrical steel, grain oriented electrical steel, goes steel, ngo steel, silicon steel, transformer steel, ferrosilicon, silicon metal, aço elétrico, aco eletrico, aço silício, aco silicio]
+  oleo_isolante:
+    queries: ['"transformer oil price"', '"insulating oil price"', '"mineral insulating oil"', '"naphthenic base oil"']
+    keywords: [transformer oil, insulating oil, mineral insulating oil, electrical insulating oil, naphthenic oil, base oil price, nynas, óleo isolante, oleo isolante]
+events:
+  interrupcao_oferta:
+    impact: 1
+    patterns: ['\\bstrike\\b', '\\bmine closure\\b', '\\bshutdown\\b', '\\bproduction cut\\b', '\\bsupply disruption\\b', '\\bforce majeure\\b', '\\bexport ban\\b', '\\bshortage\\b', '\\bgreve\\b']
+  aumento_oferta:
+    impact: -1
+    patterns: ['\\bproduction increase\\b', '\\boutput increase\\b', '\\bnew mine\\b', '\\bcapacity expansion\\b', '\\bproduction recovery\\b']
+  aumento_demanda:
+    impact: 1
+    patterns: ['\\bdemand growth\\b', '\\bstrong demand\\b', '\\bdemand surge\\b', '\\bgrid investment\\b', '\\binfrastructure investment\\b']
+  queda_demanda:
+    impact: -1
+    patterns: ['\\bdemand slowdown\\b', '\\bweak demand\\b', '\\bdemand decline\\b', '\\brecession\\b', '\\bmanufacturing contraction\\b']
+  queda_estoques:
+    impact: 1
+    patterns: ['\\binventory decline\\b', '\\bstocks fall\\b', '\\binventory draw\\b', '\\blow inventories\\b']
+  aumento_estoques:
+    impact: -1
+    patterns: ['\\binventory increase\\b', '\\bstocks rise\\b', '\\binventory build\\b', '\\bhigh inventories\\b']
